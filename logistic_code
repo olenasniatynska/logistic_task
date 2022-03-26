@@ -1,0 +1,84 @@
+"""Simplified program for making logistic orders"""
+
+import random
+inform = {}
+class Item:
+    """Describes item"""
+    def __init__(self,name,price):
+        self.name = name
+        self.price = price
+        inform[name] = price
+
+    def __str__(self):
+        return f"Item: {self.name}, price: {self.price}"
+
+
+class Vehicle:
+    """Describes vehicle"""
+    def __init__(self,num,isavailable = True):
+        self.vehicles = []
+        self.num = num
+        self.avail = isavailable
+        inform[self.num] = True
+
+
+
+class Location:
+    """
+    Describes Location, city and number of postoffice
+    """
+    def __init__(self,city,postoffice):
+        self.city = city
+        self.postoffice = postoffice
+
+
+class Order:
+    """
+    Puts all information together
+    """
+    def __init__(self,user_name,city,postoffice,items):
+        self.user_name = user_name
+        self.city = city
+        self.post_num = postoffice
+        self.items = items
+        inform['city'] = city
+        summary = 0
+        for item in self.items:
+            summary += inform[item.name]
+        inform['price'] = summary
+
+    def ___str__(self):
+        for i in range(100000000,999999999):
+            return  f"Your order number is {str(random.randint(i))}"
+
+
+class logSystem(Order):
+    """
+    Make up an order and chooses a car
+    """
+
+    def __init__(self, vehicles):
+        self.vehicles = vehicles
+
+    def placeOrder(self,order):
+        """
+        Chooses a vehicle
+        """
+
+        for i in inform:
+            if type(i) == int:
+                inform.pop(i)
+                break
+            return "There is no available vehicle"
+
+        
+    def trackOrder(self,num_order):
+        """
+        Sums up all information
+        """
+        if True not in  inform.values():
+            return "No such order."
+        return f"Your order #{num_order} is sent to {inform['city']}. \
+Total price: {inform['price']} UAH."
+
+
